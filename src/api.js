@@ -1,5 +1,3 @@
-import { delay } from "./utils.js";
-
 const apiurl ="https://opentdb.com/api.php?amount=10";
 
 async function GetSessionToken()
@@ -29,7 +27,7 @@ async function ResetSessionToken(token)
 
     if (data.response_code === 0)
     {
-        return true;
+        return data.token;
     }
     else
     {
@@ -42,7 +40,6 @@ async function ResetSessionToken(token)
 const value = await ResetSessionToken(token);
 console.log(value);
 */
-
 
 async function Getcategory()
 {
@@ -70,6 +67,7 @@ async function FetchQuestions(token, amount = 5, type = "multiple")
   else 
   {
     console.log(`Error ocurring ${data.response_code}`)
+    return data.response_code;
   }
 }
 
