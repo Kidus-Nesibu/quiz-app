@@ -1,24 +1,12 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { GetSessionToken, ResetSessionToken, FetchQuestions, Category } from "./api.js";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+//const Container = document.getElementById("container")
+//const Choices = document.getElementById("Choices")
 
-setupCounter(document.querySelector('#counter'))
+const token = await GetSessionToken()
+const questions = await FetchQuestions(token)
+
+console.log(token)
+console.log(questions)
+
+
