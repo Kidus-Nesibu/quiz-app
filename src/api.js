@@ -16,9 +16,10 @@ async function GetSessionToken()
     }
 }
 
-/**checking for errors */
+/**checking for errors 
 const token = await GetSessionToken()
 console.log(token)
+*/
 
 
 async function ResetSessionToken(token)
@@ -37,9 +38,10 @@ async function ResetSessionToken(token)
     }
 }
 
-/**checking for errors */
+/**checking for errors 
 const value = await ResetSessionToken(token);
 console.log(value);
+*/
 
 
 async function Getcategory()
@@ -50,9 +52,10 @@ async function Getcategory()
     
 }
 
-/**checking for errors  */
+/**checking for errors  
 const gener = await Getcategory();
 console.log(gener)
+*/
 
 async function FetchQuestions(token, amount = 5, type = "multiple")
 {
@@ -71,9 +74,10 @@ async function FetchQuestions(token, amount = 5, type = "multiple")
 }
 
 
-/**checking for errors */
+/**checking for errors 
 const Questions = await FetchQuestions(token)
 console.log(Questions)
+*/
 
 
 export {GetSessionToken, ResetSessionToken, FetchQuestions, Getcategory}
