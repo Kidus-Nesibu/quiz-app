@@ -1,0 +1,105 @@
+/* General reset and font styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 15px;
+  }
+  
+  .card {
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 1000px;  /* Larger card */
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;  /* Space between elements */
+  }
+  
+  .text-container {
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    gap: 10px;
+    text-align: left;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #e83e8c;
+    margin-bottom: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 0.3s;
+  }
+  
+  a {
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  a:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  a:active {
+    transform: scale(1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  
+    a {
+      font-size: 1rem;
+      padding: 8px 15px;
+    }
+  
+    .card {
+      flex-direction: column; /* Stack card content vertically on small screens */
+      padding: 20px;
+    }
+  }
+  

@@ -70,7 +70,18 @@ Next.addEventListener('click', () => {
     }
     else if (index === questions.results.length - 1)
     {
-        window.location.href ="result.html";
+        if(points > 5)
+        {
+            window.location.href="excellent.html";
+        }
+        else if (points === 5)
+        {
+            window.location.href="good.html"
+        }
+        else
+        {
+            window.location.href ="terrible.html";
+        }
 
     }
 });
