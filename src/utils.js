@@ -22,6 +22,5 @@ function errhandler(errcode)
         console.log("Too many requests")
     }
 }
-
 export {shuffleArray, errhandler}
 

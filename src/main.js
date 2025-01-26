@@ -1,81 +1,84 @@
 import { GetSessionToken, ResetSessionToken, FetchQuestions, Getcategory } from "./api.js";
-import { shuffleArray, errhandler} from "./utils.js";
+import { shuffleArray, errhandler } from "./utils.js";
 
 const token = await GetSessionToken();
 const questions = await FetchQuestions(token);
-let index = 0;
+let index = 0; // Current question index
+let points = 0;
 
-errhandler(questions.response_code);
+errhandler(questions.response_code); // Handle errors if any
 
-function renderQuestion(questionData, index) {
-    // Select the necessary DOM elements
+// Initial rendering of the first question// 
+renderQuestion(questions, index);
+
+// Function to render a question
+function renderQuestion(questionData, currentIndex) {
     const questionElement = document.getElementById('question');
     const answerContainer = document.getElementById('answer');
-    
+    const scoreContainer = document.getElementById('score');
+
     // Clear previous answers
     answerContainer.innerHTML = '';
 
     // Set the question text
-    questionElement.textContent = questionData.results[index].question;
+    questionElement.textContent = questionData.results[currentIndex].question;
 
     // Combine and shuffle the answers
-    const allAnswers = [...questionData.results[index].incorrect_answers, questionData.results[index].correct_answer];
+    const allAnswers = [...questionData.results[currentIndex].incorrect_answers, questionData.results[currentIndex].correct_answer];
     shuffleArray(allAnswers);
 
-    const answerButtons = [];
-    let selectedButton = null;
-
     // Create and append answer buttons
-    allAnswers.forEach(answer => {
+    
+    allAnswers.forEach((answer) => {
         const answerButton = document.createElement('button');
-        answerButton.textContent = answer; // Set button text to the answer
-        answerButton.classList.add('answer-btn'); // Optional: Add a class for styling
-        answerContainer.appendChild(answerButton);
-
-
-        answerButtons.push(answerButton);
+        answerButton.textContent = answer;
+        //answerButton.classList.add('answer-btn'); // Optional: Add a class for styling
 
         // Add click listener to check correctness
         answerButton.addEventListener('click', () => {
-            if (selectedButton)
-            {
-                selectedButton.style.backgroundColor ='';
-            }
+            // Clear previously selected answers
+            [...answerContainer.children].forEach((btn) => (btn.style.backgroundColor = ''));
 
+            // Highlight the selected answer
             answerButton.style.backgroundColor = 'lightblue';
 
-            selectedButton = answerButton;
-
-            if (answer === questionData.results[index].correct_answer)
-            {
-                console.log('Correct answer!');
-                //answerButton.style.backgroundColor = 'green';
-
-            } 
-            else 
-            {
-                console.log('Wrong answer!');
-                //answerButton.style.backgroundColor = 'red';
+            if (answer === questionData.results[currentIndex].correct_answer) {
+                if (!answerButton.classList.contains('correct')) 
+                    {
+                    points++;
+                    answerButton.classList.add('correct'); // Prevent double points
+                    }
             }
+        });
+
+        scoreContainer.innerHTML = `Score: ${points}`;
+        answerContainer.appendChild(answerButton);
     });
-});
+    return points;
 }
+
+// Event listeners for navigation
 const Next = document.getElementById('next-btn');
 const Prev = document.getElementById('prev-btn');
 
 Next.addEventListener('click', () => {
-    if (index < questions.results.length - 1) {
-        index++; // Increment the index to show the next question
+    if (index < questions.results.length - 1) 
+    {
+        index++;
         renderQuestion(questions, index);
+        
+    }
+    else if (index === questions.results.length - 1)
+    {
+        window.location.href ="result.html";
+
     }
 });
 
-// Prev button click handler
 Prev.addEventListener('click', () => {
-    if (index > 0) {
-        index--; // Decrement the index to show the previous question
+    if (index > 0)
+    {
+        index--;
         renderQuestion(questions, index);
     }
 });
-
-renderQuestion(questions, index);
