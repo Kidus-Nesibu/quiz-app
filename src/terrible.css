@@ -11,7 +11,7 @@
 body {
     font-family: 'Poppins', sans-serif; /* Updated to use Poppins */
     background-color: #f8f9fa;
-    color: #343a40;
+    color: #000; /* Changed text color to black */
     line-height: 1.6;
     display: flex;
     justify-content: center;
@@ -28,7 +28,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-size: 2rem;
-    color: #e83e8c;
+    color: #000; /* Changed text color to black */
     z-index: 1; /* Ensure it stays above other elements */
 }
 
@@ -61,7 +61,7 @@ body {
 h1 {
     font-size: 2.5rem;
     font-weight: 600; /* More prominent weight */
-    color: #e83e8c;
+    color: #000; /* Changed text color to black */
     margin-bottom: 0;
     animation: fadeIn 1.5s ease-out forwards;
 }
