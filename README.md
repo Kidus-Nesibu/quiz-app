@@ -42,13 +42,3 @@ Project Structure
     styles.css: The CSS file for styling the app.
     main.js: The JavaScript file that handles the logic of the quiz.
 
-Contributing
-
-If you'd like to contribute to this project, feel free to fork the repository, make your changes, and submit a pull request. Contributions are welcome!
-License
-
-This project is open-source and available under the MIT License.
-
-
-You can copy this into a file named `README.md` and use it for your project. Let me know if you'd like to make any changes!
-
