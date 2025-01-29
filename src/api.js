@@ -54,7 +54,7 @@ const gener = await Getcategory();
 console.log(gener)
 */
 
-async function FetchQuestions(token, amount = 5, type = "multiple")
+async function FetchQuestions(token, amount = 10, type = "multiple")
 {
   const url = `https://opentdb.com/api.php?amount=${amount}&type=${type}&token=${token}`;
   const response = await fetch(url);
