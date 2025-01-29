@@ -1,12 +1,15 @@
+/* Importing the Poppins font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 /* General reset and font styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
   
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+    font-family: 'Poppins', sans-serif; /* Updated to use Poppins */
     background-color: #f8f9fa;
     color: #343a40;
     line-height: 1.6;
@@ -16,9 +19,22 @@
     height: 100vh;
     text-align: center;
     padding: 0 15px;
-  }
-  
-  .card {
+}
+
+/* Ensure score is positioned at the top */
+#score-heading {
+    position: absolute; /* This removes it from the flex layout */
+    top: 10px;  /* Adjust the top space as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #e83e8c;
+    z-index: 1; /* Ensure it stays above other elements */
+}
+
+/* Card styling */
+.card {
+    position: relative; /* Ensure absolute positioning works */
     background-color: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -29,32 +45,52 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;  /* Space between elements */
-  }
-  
-  .text-container {
+    flex-direction: column; /* Stack content vertically */
+    padding-top: 50px; /* Adjust padding to make space for the score heading */
+}
+
+/* Text container and animation */
+.text-container {
     display: flex;
     flex-direction: column; /* Stack text vertically */
     gap: 10px;
     text-align: left;
-  }
-  
-  h1 {
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+h1 {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 600; /* More prominent weight */
     color: #e83e8c;
     margin-bottom: 0;
     animation: fadeIn 1.5s ease-out forwards;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 0;
+}
+
+h1.fade-in {
+    animation-delay: 0.5s;
+}
+
+/* GIF container styling and animation */
+.gif-container {
     animation: fadeIn 1.5s ease-out forwards;
-    animation-delay: 0.3s;
-  }
-  
-  a {
+    animation-delay: 1s;
+}
+
+.gif-container img {
+    width: 100%; /* Make sure GIF fits within the container */
+    max-width: 500px; /* Limit max size of the gif */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button container and animation */
+.button-container {
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 1.5s;
+    margin-top: 20px;
+}
+
+a {
     font-size: 1.1rem;
     padding: 12px 25px;
     background-color: #007bff;
@@ -64,42 +100,42 @@
     display: inline-block;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     background-color: #0056b3;
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  a:active {
+}
+
+a:active {
     transform: scale(1);
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
+}
+
+/* Animations */
+@keyframes fadeIn {
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  @media (max-width: 767px) {
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 767px) {
     h1 {
-      font-size: 2rem;
+        font-size: 2rem;
     }
-  
-    p {
-      font-size: 1rem;
+
+    .gif-container img {
+        width: 80%; /* Adjust image size for smaller screens */
     }
-  
+
     a {
-      font-size: 1rem;
-      padding: 8px 15px;
+        font-size: 1rem;
+        padding: 8px 15px;
     }
-  
+
     .card {
-      flex-direction: column; /* Stack card content vertically on small screens */
-      padding: 20px;
+        flex-direction: column; /* Stack card content vertically on small screens */
+        padding: 20px;
     }
-  }
-  
+}
