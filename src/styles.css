@@ -3,7 +3,7 @@
 
 /* General body styling */
 body {
-    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-family: 'Poppins', sans-serif;
     background-color: #f7faff;
     margin: 0;
     padding: 0;
@@ -13,29 +13,38 @@ body {
     min-height: 100vh;
     background-image: linear-gradient(to bottom right, #eef2f9, #cfd9e6);
     animation: backgroundShift 12s ease infinite;
+    flex-direction: column; /* Allow navbar to be at the top */
 }
 
-/* Container Styling */
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container Styling for simplified layout */
 .container {
     background-color: #ffffff;
-    border-radius: 15px;
-    padding: 50px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 700px;
-    min-height: 90vh; /* Makes the card fill most of the screen */
+    padding: 30px; /* Reduced padding for shorter card */
+    width: 80%;
+    max-width: 900px;
+    height: 80vh; /* Reduced height for shorter card */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Heading Styling */
 h1 {
     font-size: 2.8rem;
-    font-weight: 600; /* Makes it bold and modern */
+    font-weight: 600;
     color: #007bff;
     margin-bottom: 20px;
     animation: bounceIn 1.5s ease-in-out;
@@ -43,11 +52,11 @@ h1 {
 
 /* Paragraph Styling */
 p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #4a4a4a;
     line-height: 1.6;
     margin-bottom: 20px;
-    font-weight: 300; /* Light weight for readability */
+    font-weight: 300;
     animation: fadeInUp 1s ease-in-out;
 }
 
@@ -56,7 +65,7 @@ p {
     font-family: 'Poppins', sans-serif;
     background-color: #007bff;
     border-color: #007bff;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding: 12px 30px;
     border-radius: 25px;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -70,8 +79,72 @@ p {
 /* Image Styling */
 .home-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
+    opacity: 0;  /* Initially hidden for animation */
+    animation: fadeInImage 2s ease-in-out forwards; /* Image fade-in animation */
+}
+
+/* Fade-in animation for image */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button animation */
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-button {
+    animation: fadeInButton 1.5s ease-in-out;
+}
+
+/* Animated Title and Text */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animated-title {
+    animation: bounceIn 1.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-text {
+    animation: fadeInUp 1s ease-in-out;
 }

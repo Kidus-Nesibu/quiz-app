@@ -11,19 +11,64 @@
     <link rel="stylesheet" href="./src/styles.css" />
   </head>
   <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">TriviaTime</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <!-- Amount Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="amountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Amount
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="amountDropdown">
+                <li><a class="dropdown-item" href="#">10</a></li>
+                <li><a class="dropdown-item" href="#">20</a></li>
+                <li><a class="dropdown-item" href="#">30</a></li>
+              </ul>
+            </li>
+            <!-- Category Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                <li><a class="dropdown-item" href="#">General Knowledge</a></li>
+                <li><a class="dropdown-item" href="#">Science</a></li>
+                <li><a class="dropdown-item" href="#">History</a></li>
+              </ul>
+            </li>
+            <!-- Difficulty Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="difficultyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Difficulty
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="difficultyDropdown">
+                <li><a class="dropdown-item" href="#">Easy</a></li>
+                <li><a class="dropdown-item" href="#">Medium</a></li>
+                <li><a class="dropdown-item" href="#">Hard</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
     <div class="container text-center">
-      <h1 class="my-5 animated-title">Welcome to TriviaTime</h1>
-      <img src="./src/home.jpg" alt="Trivia App" class="img-fluid my-3" />
+      <img src="./src/home.jpg" alt="Trivia App" class="img-fluid my-3 home-image animated-image" />
       <p class="lead animated-text">
-        Test your knowledge with fun and challenging trivia questions! Choose from categories like General Knowledge, Science, and History.
-      </p>
-      <p class="animated-text">
-        Click below to start your quiz and see how much you know!
+        Ready to test your knowledge? Let's get started with some fun trivia!
       </p>
       <div class="mt-4">
         <a href="quiz.html" class="btn btn-primary btn-lg animated-button">Start Quiz</a>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     ></script>
