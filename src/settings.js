@@ -1,5 +1,4 @@
 // settings.js
-
 // Declare variables to store user selections
 let amount = '';
 let category = '';
@@ -91,6 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const scoreContainer = document.getElementById('score');
+    const score = localStorage.getItem('score');
+
+    if (score !== null) {
+        console.log('Trying to render the score');
+        scoreContainer.innerHTML = `Score: ${score}`;
+        console.log(score);
+    } else {
+        console.log('No score found in localStorage');
+    }
+});
+
 
 // Export the variables to be used in other files
 export { amount, category, difficulty, type };
