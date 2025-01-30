@@ -1,8 +1,16 @@
 import { GetSessionToken, ResetSessionToken, FetchQuestions, Getcategory } from "./api.js";
-import { shuffleArray, errhandler } from "./utils.js";
+import { shuffleArray, errhandler, categoryId } from "./utils.js";
+import { amount, category, difficulty, type } from './settings.js';
+
 
 const token = await GetSessionToken();
-const questions = await FetchQuestions(token);
+const categoryIdnumber = categoryId(category);
+
+console.log(category)
+console.log(categoryIdnumber)
+console.log(difficulty)
+//console.log(type)
+const questions = await FetchQuestions(token, amount, difficulty, categoryIdnumber);
 let index = 0; // Current question index
 let points = 0;
 
@@ -20,6 +28,8 @@ function renderQuestion(questionData, currentIndex) {
     // Clear previous answers
     answerContainer.innerHTML = '';
 
+    console.log('this is the data')
+    console.log(questionData)
     // Set the question text
     questionElement.textContent = questionData.results[currentIndex].question;
 
@@ -70,17 +80,21 @@ Next.addEventListener('click', () => {
     }
     else if (index === questions.results.length - 1)
     {
-        if(points > 5)
+        console.log('it came till here if it doesnt run here is the issue')
+        console.log(Math.ceil(amount/2))
+        console.log(Math.floor(amount/2))
+
+        if(points > Math.ceil(amount/2))
         {
             window.location.href="excellent.html";
         }
-        else if (points === 5)
+        else if (points <= Math.floor(amount/2))
         {
-            window.location.href="good.html"
+            window.location.href = "terrible.html";
         }
         else
         {
-            window.location.href ="terrible.html";
+            window.location.herf = "good.html"
         }
 
     }

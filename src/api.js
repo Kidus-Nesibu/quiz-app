@@ -1,3 +1,5 @@
+import { difficulty } from "./settings";
+
 const apiurl ="https://opentdb.com/api.php?amount=10";
 
 async function GetSessionToken()
@@ -54,9 +56,10 @@ const gener = await Getcategory();
 console.log(gener)
 */
 
-async function FetchQuestions(token, amount = 10, type = "multiple")
+async function FetchQuestions(token, amount, difficulty, category)
 {
-  const url = `https://opentdb.com/api.php?amount=${amount}&type=${type}&token=${token}`;
+  const type = "multiple";
+  const url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=${type}&token=${token}&category=${category}`;
   const response = await fetch(url);
   const data = await response.json();
 
