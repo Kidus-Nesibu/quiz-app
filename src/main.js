@@ -30,7 +30,7 @@ function renderQuestion(questionData, currentIndex) {
     console.log('this is the data')
     console.log(questionData)
     // Set the question text
-    questionElement.textContent = questionData.results[currentIndex].question;
+    questionElement.textContent = `${currentIndex + 1}, ${questionData.results[currentIndex].question}`;
 
     // Combine and shuffle the answers
     const allAnswers = [...questionData.results[currentIndex].incorrect_answers, questionData.results[currentIndex].correct_answer];
