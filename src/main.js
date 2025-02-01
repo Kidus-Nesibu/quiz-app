@@ -1,58 +1,70 @@
-import { GetSessionToken, FetchQuestions } from "./api.js";
-import { shuffleArray, errhandler, categoryId } from "./utils.js";
-import { amount, category, difficulty } from './settings.js';
+import { getSessionToken, fetchQuestions } from "./api.js";
+import { shuffleArray, errorHandler, getCategoryId } from "./utils.js";
+import { selectedAmount, selectedCategory,  selectedDifficulty } from "./settings.js";
 
-const token = await GetSessionToken();
-const categoryIdnumber = categoryId(category);
+// Retrieve session token and category ID
+const token = await getSessionToken();
+const categoryId = getCategoryId(selectedCategory);
 
-console.log(category)
-console.log(categoryIdnumber)
-console.log(difficulty)
+console.log(selectedCategory);
+console.log(categoryId);
+console.log(selectedDifficulty);
 
-const questions = await FetchQuestions(token, amount, difficulty, categoryIdnumber);
+// Fetch questions from API
+const questions = await fetchQuestions(token, selectedAmount, selectedDifficulty, categoryId);
 let index = 0; // Current question index
 let points = 0;
 
-errhandler(questions.response_code); // Handle errors if any
+// Handle API response errors
+errorHandler(questions.response_code);
 
-// Initial rendering of the first question
+// Render the first question
 renderQuestion(questions, index);
 
-// Function to render a question
+/**
+ * Renders a trivia question and its answer options.
+ * 
+ * @param {Object} questionData - The fetched question data.
+ * @param {number} currentIndex - The index of the current question.
+ * @returns {number} - Updated points score.
+ */
 function renderQuestion(questionData, currentIndex) {
-    const questionElement = document.getElementById('question');
-    const answerContainer = document.getElementById('answer');
-    const scoreContainer = document.getElementById('score');
+    const questionElement = document.getElementById("question");
+    const answerContainer = document.getElementById("answer");
+    const scoreContainer = document.getElementById("score");
 
     // Clear previous answers
-    answerContainer.innerHTML = '';
+    answerContainer.innerHTML = "";
 
-    console.log('this is the data')
-    console.log(questionData)
+    console.log("Question Data:", questionData);
+
     // Set the question text
-    questionElement.textContent = `${currentIndex + 1}, ${questionData.results[currentIndex].question}`;
+    questionElement.textContent = `${currentIndex + 1}. ${questionData.results[currentIndex].question}`;
 
     // Combine and shuffle the answers
-    const allAnswers = [...questionData.results[currentIndex].incorrect_answers, questionData.results[currentIndex].correct_answer];
+    const allAnswers = [
+        ...questionData.results[currentIndex].incorrect_answers,
+        questionData.results[currentIndex].correct_answer
+    ];
     shuffleArray(allAnswers);
 
     // Create and append answer buttons
     allAnswers.forEach((answer) => {
-        const answerButton = document.createElement('button');
+        const answerButton = document.createElement("button");
         answerButton.textContent = answer;
 
         // Add click listener to check correctness
-        answerButton.addEventListener('click', () => {
-            // Clear previously selected answers
-            [...answerContainer.children].forEach((btn) => (btn.style.backgroundColor = ''));
-
+        answerButton.addEventListener("click", () => {
+            // Reset background color for all answers
+            [...answerContainer.children].forEach((btn) => (btn.style.backgroundColor = ""));
+            
             // Highlight the selected answer
-            answerButton.style.backgroundColor = 'lightblue';
+            answerButton.style.backgroundColor = "lightblue";
 
             if (answer === questionData.results[currentIndex].correct_answer) {
-                if (!answerButton.classList.contains('correct')) {
+                if (!answerButton.classList.contains("correct")) {
                     points++;
-                    answerButton.classList.add('correct'); // Prevent double points
+                    answerButton.classList.add("correct"); // Prevent double counting
                 }
             }
         });
@@ -61,28 +73,28 @@ function renderQuestion(questionData, currentIndex) {
         answerContainer.appendChild(answerButton);
     });
     
-    // Save the updated points in localStorage
-    localStorage.setItem('score', points);
+    // Save updated score in localStorage
+    localStorage.setItem("score", points);
     console.log(points);
     return points;
 }
 
-// Event listeners for navigation
-const Next = document.getElementById('next-btn');
-const Prev = document.getElementById('prev-btn');
+// Event listeners for navigation buttons
+const nextButton = document.getElementById("next-btn");
+const prevButton = document.getElementById("prev-btn");
 
-Next.addEventListener('click', () => {
+nextButton.addEventListener("click", () => {
     if (index < questions.results.length - 1) {
         index++;
         renderQuestion(questions, index);
     } else if (index === questions.results.length - 1) {
-        console.log('it came till here if it doesnt run here is the issue')
-        console.log(Math.ceil(amount/2))
-        console.log(Math.floor(amount/2))
+        console.log("Final question reached, evaluating results...");
+        console.log("Ceiling division:", Math.ceil(selectedAmount / 2));
+        console.log("Floor division:", Math.floor(selectedAmount / 2));
 
-        if(points >= Math.ceil(amount/2)) {
-            window.location.href="excellent.html";
-        } else if (points <= Math.floor(amount/2)) {
+        if (points >= Math.ceil(selectedAmount / 2)) {
+            window.location.href = "excellent.html";
+        } else if (points <= Math.floor(selectedAmount / 2)) {
             window.location.href = "terrible.html";
         } else {
             window.location.href = "good.html";
@@ -90,7 +102,7 @@ Next.addEventListener('click', () => {
     }
 });
 
-Prev.addEventListener('click', () => {
+prevButton.addEventListener("click", () => {
     if (index > 0) {
         index--;
         renderQuestion(questions, index);

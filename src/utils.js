@@ -1,69 +1,80 @@
-function shuffleArray(array)
-{
-    array.sort(() => Math.random() - 0.5);
-}
+/**
+ * Utility functions for quiz application.
+ * Provides functions for shuffling arrays, handling errors,
+ * setting up event listeners, and mapping category names to IDs.
+ */
 
-function errhandler(errcode)
-{
-    switch (errcode)
-    {
-    case 1:
-        console.log("The API doesn't have enough questions for your query");
-    case 2:
-        console.log("Contains an invalid parameter. Arguements passed in aren't valid.");
-    case 3:
-        console.log("Token Not Found Session Token does not exist.");
-    case 4:
-        console.log(`Token has returned all possible questions for the specified query. 
-            Resetting the Token is necessary.`)
-        token = ResetSessionToken(token);
-        console.log(token)
-    case 5:
-        console.log("Too many requests")
+/**
+ * Shuffles an array in place using Fisher-Yates algorithm.
+ * @param {Array} array - The array to shuffle.
+ */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
-// Updated setupClickListeners function with callback
-function setupClickListeners(ids, callback) {
-    ids.forEach(id => {
-        let element = document.getElementById(id);
+
+/**
+ * Handles API response errors.
+ * @param {number} errCode - The error code returned from the API.
+ */
+async function errorHandler(errCode) {
+    switch (errCode) {
+        case 1:
+            console.error("The API doesn't have enough questions for your query.");
+            break;
+        case 2:
+            console.error("Invalid parameter: Arguments passed are not valid.");
+            break;
+        case 3:
+            console.error("Session token not found: The token does not exist.");
+            break;
+        case 4:
+            console.warn("Token exhausted: Resetting token.");
+            token = await resetSessionToken(token);
+            console.log("New Token:", token);
+            break;
+        case 5:
+            console.error("Too many requests: Slow down your requests.");
+            break;
+        default:
+            console.log(errCode)
+            //console.error("Unknown error occurred.");
+    }
+}
+
+/**
+ * Sets up click event listeners for multiple elements and triggers a callback.
+ * @param {string[]} elementIds - Array of element IDs.
+ * @param {Function} callback - Function to execute on click.
+ */
+function setupClickListeners(elementIds, callback) {
+    elementIds.forEach(id => {
+        const element = document.getElementById(id);
         if (element) {
             element.addEventListener("click", (event) => {
                 event.preventDefault();
-                let textContent = event.target.textContent;
-
-                let selectedAmount;
-                if (!isNaN(textContent)) {
-                    selectedAmount = parseInt(textContent); // If it's a number, use it
-                } else {
-                    selectedAmount = textContent; // If not, treat it as a string (e.g., "five", "ten")
-                }
-
-                // Call the callback function with the selected amount
-                callback(selectedAmount);
+                const textContent = event.target.textContent;
+                const selectedValue = isNaN(textContent) ? textContent : parseInt(textContent);
+                callback(selectedValue);
             });
         }
     });
 }
 
-function categoryId(category)
-{
-    let categoryIdnumber = 0;
-    if (category === "general")
-    {
-        categoryIdnumber = 9;
-    }
-    else if (category === "science")
-    {
-        categoryIdnumber = 17;
-    }
-    else if (category === "history")
-    {
-        categoryIdnumber = 23;
-    }
-
-    return categoryIdnumber;
+/**
+ * Maps category names to Open Trivia Database category IDs.
+ * @param {string} category - The category name.
+ * @returns {number} - The corresponding category ID.
+ */
+function getCategoryId(category) {
+    const categoryMap = {
+        general: 9,
+        science: 17,
+        history: 23
+    };
+    return categoryMap[category] || 0; // Default to 0 if category not found.
 }
 
-
-export {shuffleArray, errhandler, setupClickListeners, categoryId}
-
+export { shuffleArray, errorHandler, setupClickListeners, getCategoryId };
