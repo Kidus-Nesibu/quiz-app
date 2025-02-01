@@ -1,5 +1,5 @@
 import { getSessionToken, fetchQuestions } from "./api.js";
-import { shuffleArray, errorHandler, getCategoryId } from "./utils.js";
+import { shuffleArray, errorHandler, getCategoryId, decodeHtmlEntities } from "./utils.js";
 import { selectedAmount, selectedCategory,  selectedDifficulty } from "./settings.js";
 
 // Retrieve session token and category ID
@@ -28,6 +28,7 @@ renderQuestion(questions, index);
  * @param {number} currentIndex - The index of the current question.
  * @returns {number} - Updated points score.
  */
+
 function renderQuestion(questionData, currentIndex) {
     const questionElement = document.getElementById("question");
     const answerContainer = document.getElementById("answer");
@@ -38,13 +39,13 @@ function renderQuestion(questionData, currentIndex) {
 
     console.log("Question Data:", questionData);
 
-    // Set the question text
-    questionElement.textContent = `${currentIndex + 1}. ${questionData.results[currentIndex].question}`;
+    // Decode and set the question text
+    questionElement.textContent = `${currentIndex + 1}. ${decodeHtmlEntities(questionData.results[currentIndex].question)}`;
 
     // Combine and shuffle the answers
     const allAnswers = [
-        ...questionData.results[currentIndex].incorrect_answers,
-        questionData.results[currentIndex].correct_answer
+        ...questionData.results[currentIndex].incorrect_answers.map(decodeHtmlEntities),
+        decodeHtmlEntities(questionData.results[currentIndex].correct_answer)
     ];
     shuffleArray(allAnswers);
 
@@ -61,7 +62,7 @@ function renderQuestion(questionData, currentIndex) {
             // Highlight the selected answer
             answerButton.style.backgroundColor = "lightblue";
 
-            if (answer === questionData.results[currentIndex].correct_answer) {
+            if (answer === decodeHtmlEntities(questionData.results[currentIndex].correct_answer)) {
                 if (!answerButton.classList.contains("correct")) {
                     points++;
                     answerButton.classList.add("correct"); // Prevent double counting
@@ -72,13 +73,12 @@ function renderQuestion(questionData, currentIndex) {
         scoreContainer.innerHTML = `Score: ${points}/${selectedAmount}`;
         answerContainer.appendChild(answerButton);
     });
-    
+
     // Save updated score in localStorage
     localStorage.setItem("score", points);
     console.log(points);
     return points;
 }
-
 // Event listeners for navigation buttons
 const nextButton = document.getElementById("next-btn");
 const prevButton = document.getElementById("prev-btn");

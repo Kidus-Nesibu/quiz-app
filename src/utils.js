@@ -77,4 +77,10 @@ function getCategoryId(category) {
     return categoryMap[category] || 0; // Default to 0 if category not found.
 }
 
-export { shuffleArray, errorHandler, setupClickListeners, getCategoryId };
+function decodeHtmlEntities(text) {
+    const textarea = document.createElement("textarea");
+    textarea.innerHTML = text;
+    return textarea.value;
+}
+
+export { shuffleArray, errorHandler, setupClickListeners, getCategoryId, decodeHtmlEntities };
