@@ -69,7 +69,7 @@ function renderQuestion(questionData, currentIndex) {
             }
         });
 
-        scoreContainer.innerHTML = `Score: ${points}`;
+        scoreContainer.innerHTML = `Score: ${points}/${selectedAmount}`;
         answerContainer.appendChild(answerButton);
     });
     

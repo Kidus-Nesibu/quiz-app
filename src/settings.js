@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (savedScore !== null) {
         console.log("Rendering saved score");
-        scoreContainer.innerHTML = `Score: ${savedScore}`;
+        scoreContainer.innerHTML = `Score: ${savedScore}/${selectedAmount}`;
         console.log(savedScore);
     } else {
         console.log("No score found in localStorage");
