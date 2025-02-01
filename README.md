@@ -1,44 +1,74 @@
-# Trivia Quiz App
+# Quiz App
 
 ## Overview
-
-The **Trivia Quiz App** is a fun and engaging trivia game where users can test their knowledge across different categories. The app allows users to answer trivia questions and receive feedback based on their performance. The app is built using **HTML**, **CSS**, and **JavaScript**, with a clean, user-friendly interface powered by **Bootstrap**.
+The **Quiz App** is an AI-powered interactive quiz platform designed to enhance learning through engaging multiple-choice questions. The app leverages AI to generate questions, provide explanations, and adapt to users' performance for a personalized experience.
 
 ## Features
+- 🔥 **AI-Generated Questions** – Automatically generates quiz questions based on selected topics.
+- 🎯 **Adaptive Learning** – Adjusts question difficulty based on the user's answers.
+- 🎨 **Modern UI** – Built with an intuitive and responsive design.
+- 📊 **Score Tracking** – Keeps track of user progress and performance.
+- 🔊 **Text-to-Speech Support** – Reads questions aloud for better accessibility.
+- ☁️ **Cloud-Based Storage** – Saves quiz history and preferences using Firebase.
 
-- **Question Categories**: The app includes various trivia categories such as General Knowledge, Science, and History.
-- **Score Tracking**: Users can see their score as they progress through the quiz.
-- **Navigation**: Users can navigate through questions with previous and next buttons.
-- **Responsive Design**: The app is designed to be mobile-friendly and responsive across various devices.
-- **Feedback Pages**: After completing the quiz, users receive feedback based on their score:
-  - Excellent: "Fantastic, you performed well!"
-  - Good: "Good job!"
-  - Terrible: "Better luck next time!"
+## Tech Stack
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Firebase (Firestore, Authentication)
+- **AI Integration**: OpenAI API (or similar NLP model)
+- **Deployment**: Vercel / Netlify
 
-## Technologies Used
+## Installation
+To run the project locally, follow these steps:
 
-- **HTML**: For the structure and layout of the app.
-- **CSS**: For styling and visual design, with animations to enhance the user experience.
-- **JavaScript**: To handle the logic of the quiz, including question navigation, scoring, and user input.
-- **Bootstrap**: For a responsive and modern design.
-  
-## How to Use
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/quiz-app.git
+   ```
+2. Navigate into the project directory:
+   ```sh
+   cd quiz-app
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Set up environment variables (e.g., Firebase config, API keys).
+5. Start the development server:
+   ```sh
+   npm start
+   ```
+6. Open your browser and go to `http://localhost:3000`.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/your-username/quiz-app.git
-Navigate to the project directory:
+## Usage
+- Select a category to start a quiz.
+- Answer multiple-choice questions and receive instant feedback.
+- View your score at the end of the quiz.
+- Retake quizzes to improve your knowledge.
 
-    cd quiz-app
+## Demo
+Watch a demo of the app in action:
+[![Quiz App Demo](https://img.youtube.com/vi/Vg8q3Ypap1Y/0.jpg)](https://youtu.be/Vg8q3Ypap1Y)
 
-    Open index.html in your web browser to start the quiz.
+## Contributing
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a new branch:
+   ```sh
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```sh
+   git commit -m "Add new feature"
+   ```
+4. Push to your branch:
+   ```sh
+   git push origin feature-name
+   ```
+5. Open a Pull Request.
 
-    Click on the "Start Quiz" button to begin answering trivia questions. After finishing the quiz, you'll be redirected to a results page based on your performance.
+## License
+This project is licensed under the MIT License.
 
-Project Structure
-
-    index.html: The landing page where users can start the quiz.
-    quiz.html: The main quiz page where users will answer questions.
-    styles.css: The CSS file for styling the app.
-    main.js: The JavaScript file that handles the logic of the quiz.
+## Contact
+For any inquiries, reach out to [Kidus Nesibu](mailto:knesibu3@gmail.com).
 
