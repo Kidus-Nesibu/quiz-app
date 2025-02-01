@@ -3,18 +3,8 @@
 ## Overview
 The **Quiz App** is an AI-powered interactive quiz platform designed to enhance learning through engaging multiple-choice questions. The app leverages AI to generate questions, provide explanations, and adapt to users' performance for a personalized experience.
 
-## Features
-- 🔥 **AI-Generated Questions** – Automatically generates quiz questions based on selected topics.
-- 🎯 **Adaptive Learning** – Adjusts question difficulty based on the user's answers.
-- 🎨 **Modern UI** – Built with an intuitive and responsive design.
-- 📊 **Score Tracking** – Keeps track of user progress and performance.
-- 🔊 **Text-to-Speech Support** – Reads questions aloud for better accessibility.
-- ☁️ **Cloud-Based Storage** – Saves quiz history and preferences using Firebase.
-
 ## Tech Stack
 - **Frontend**: React, Tailwind CSS
-- **Backend**: Firebase (Firestore, Authentication)
-- **AI Integration**: OpenAI API (or similar NLP model)
 - **Deployment**: Vercel / Netlify
 
 ## Installation
