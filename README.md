@@ -6,7 +6,7 @@ An interactive quiz platform designed to enhance learning through engaging multi
     Frontend: React, Tailwind CSS, Boostrap, Vite
     Backend: TriviaDB API (for fetching quiz questions)
     Deployment: Not yet hosted
-    
+
 📺 Demo Video
 
 ▶️ Watch Demo ([Watch Demo](https://youtu.be/Vg8q3Ypap1Y?si=kfu-CWMMx5hIv_3U))
@@ -14,7 +14,7 @@ An interactive quiz platform designed to enhance learning through engaging multi
 🛠 Installation & Setup
 1️⃣ Clone the Repository
 
-git clone https://github.com/yourusername/quiz-app.git
+git clone https://github.com/Kidus-Nesibu/quiz-app.git
 cd quiz-app
 
 2️⃣ Install Dependencies
