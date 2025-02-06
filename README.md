@@ -3,7 +3,7 @@
 An interactive quiz platform designed to enhance learning through engaging multiple-choice questions. The app leverages openTrivia api to provide question, and responed to users' performance based on the results.
 🚀 Tech Stack
 
-    Frontend: React, Tailwind CSS, Boostrap, Vite
+    Frontend: Javascript, CSS, Boostrap, Vite
     Backend: TriviaDB API (for fetching quiz questions)
     Deployment: Not yet hosted
 
