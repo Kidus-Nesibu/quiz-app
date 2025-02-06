@@ -6,6 +6,10 @@ An interactive quiz platform designed to enhance learning through engaging multi
     Frontend: React, Tailwind CSS, Boostrap, Vite
     Backend: TriviaDB API (for fetching quiz questions)
     Deployment: Not yet hosted
+    
+📺 Demo Video
+
+▶️ Watch Demo ([Watch Demo](https://youtu.be/Vg8q3Ypap1Y?si=kfu-CWMMx5hIv_3U))
 
 🛠 Installation & Setup
 1️⃣ Clone the Repository
@@ -73,6 +77,3 @@ This project is licensed under the MIT License.
 
 For any inquiries, reach out to:
 📧 Kidus Nesibu | ✉️ knesibu3@gmail.com
-📺 Demo Video
-
-▶️ Watch Demo ([Watch Demo](https://youtu.be/Vg8q3Ypap1Y?si=kfu-CWMMx5hIv_3U))
