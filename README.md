@@ -1,9 +1,9 @@
 📚 Quiz App
 
-An AI-powered interactive quiz platform designed to enhance learning through engaging multiple-choice questions. The app leverages AI to generate questions, provide explanations, and adapt to users' performance for a personalized experience.
+An interactive quiz platform designed to enhance learning through engaging multiple-choice questions. The app leverages openTrivia api to provide question, and responed to users' performance based on the results.
 🚀 Tech Stack
 
-    Frontend: React, Tailwind CSS, Vite
+    Frontend: React, Tailwind CSS, Boostrap, Vite
     Backend: TriviaDB API (for fetching quiz questions)
     Deployment: Not yet hosted
 
@@ -35,22 +35,6 @@ Then, open your browser and visit:
     Answer multiple-choice questions and receive instant feedback.
     View your score at the end of the quiz.
     Retake quizzes to improve your knowledge.
-
-📄 Documentation
-Project Structure
-
-quiz-app/
-│── public/         # Static assets
-│── src/
-│   ├── components/ # Reusable UI components
-│   ├── pages/      # Main app pages
-│   ├── utils/      # Helper functions
-│   ├── hooks/      # Custom React hooks
-│   ├── api/        # API calls (TriviaDB integration)
-│   ├── styles/     # Tailwind CSS configurations
-│── .env            # Environment variables
-│── package.json    # Dependencies & scripts
-│── README.md       # Project documentation
 
 API Integration (TriviaDB API)
 
