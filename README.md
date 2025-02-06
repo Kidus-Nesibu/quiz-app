@@ -75,4 +75,4 @@ For any inquiries, reach out to:
 📧 Kidus Nesibu | ✉️ knesibu3@gmail.com
 📺 Demo Video
 
-▶️ Watch Demo (YouTube video of the app in action)
+▶️ Watch Demo ([Watch Demo](https://youtu.be/Vg8q3Ypap1Y?si=kfu-CWMMx5hIv_3U))
